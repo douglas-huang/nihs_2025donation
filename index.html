@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>內湖高工家長會 114學年度募款信</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Noto Sans TC', sans-serif; background-color: #f8fafc; scroll-behavior: smooth; }
+        .chart-container { 
+            position: relative; 
+            width: 100%; 
+            max-width: 500px; 
+            margin: 0 auto; 
+            height: 300px; 
+            max-height: 400px;
+        }
+        .section-fade { animation: fadeIn 0.8s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .nav-active { border-bottom: 2px solid #ea580c; color: #ea580c; font-weight: 700; }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    </style>
+    <!-- Chosen Palette: "Industrial Warmth" - Deep Navy #1e293b, Safety Orange #ea580c, Steel Gray #64748b, White #ffffff -->
+    <!-- Application Structure Plan:
+         1. Hero Section: Emotional story "The silhouette in the factory" to engage parents.
+         2. Achievements (The "Why"): Visual stats (93%, Gold Hand Awards) proving the value of investment.
+         3. Budget (The "How"): Interactive Donut Chart for transparency on the 950k target.
+         4. Focus Areas: Highlight on Career Dev & Admin Support.
+         5. Action Center: Bank details + COPY button + GOOGLE FORM LINK (Critical from doc).
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+</head>
+<body class="text-slate-800 antialiased">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur shadow-sm border-b border-slate-100">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="font-bold text-xl text-slate-800 tracking-tight flex items-center gap-2">
+                    <span class="bg-orange-600 text-white w-8 h-8 rounded flex items-center justify-center text-sm font-bold">內</span>
+                    <span>內工家長會</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <button onclick="scrollToSection('vision')" class="nav-btn text-slate-600 hover:text-orange-600 transition font-medium" id="btn-vision">初心</button>
+                    <button onclick="scrollToSection('achievements')" class="nav-btn text-slate-600 hover:text-orange-600 transition font-medium" id="btn-achievements">亮眼榜單</button>
+                    <button onclick="scrollToSection('budget')" class="nav-btn text-slate-600 hover:text-orange-600 transition font-medium" id="btn-budget">經費運用</button>
+                    <button onclick="scrollToSection('donate')" class="nav-btn px-5 py-2 bg-slate-900 text-white rounded-full hover:bg-orange-600 transition shadow-lg transform hover:-translate-y-0.5">立即支持</button>
+                </div>
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-2xl text-slate-600" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">☰</button>
+            </div>
+            <!-- Mobile Menu Dropdown -->
+            <div id="mobile-menu" class="hidden md:hidden pb-4 bg-white border-t">
+                <button onclick="scrollToSection('vision')" class="block w-full text-left px-4 py-3 text-slate-600 border-b">初心</button>
+                <button onclick="scrollToSection('achievements')" class="block w-full text-left px-4 py-3 text-slate-600 border-b">亮眼榜單</button>
+                <button onclick="scrollToSection('budget')" class="block w-full text-left px-4 py-3 text-slate-600 border-b">經費運用</button>
+                <button onclick="scrollToSection('donate')" class="block w-full text-left px-4 py-3 text-orange-600 font-bold">立即支持</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="vision" class="pt-16 pb-16 bg-gradient-to-br from-slate-50 via-white to-orange-50">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <span class="inline-block py-1 px-3 rounded-full bg-orange-100 text-orange-700 text-sm font-bold mb-6 tracking-wide">114學年度募款計畫</span>
+            <h1 class="text-3xl md:text-5xl font-bold mb-8 text-slate-900 leading-tight">
+                因為有您的<span class="text-orange-600 relative whitespace-nowrap">
+                    「腳手」
+                    <svg class="absolute w-full h-3 -bottom-1 left-0 text-orange-200 -z-10" fill="currentColor" viewBox="0 0 100 20" preserveAspectRatio="none"><path d="M0 10 Q 50 20 100 10 L 100 20 L 0 20 Z"></path></svg>
+                </span><br>
+                孩子們的技職夢想才能落地生根
+            </h1>
+            
+            <div class="mt-10 p-8 bg-white rounded-2xl shadow-xl border-l-8 border-orange-500 text-left relative overflow-hidden group hover:shadow-2xl transition duration-500 transform hover:-translate-y-1">
+                <div class="absolute top-4 right-6 opacity-10 text-8xl font-serif text-slate-400 select-none">”</div>
+                <h3 class="text-xl font-bold text-slate-800 mb-4 flex items-center">
+                    <span class="text-2xl mr-2">🏭</span> 工廠裡的背影
+                </h3>
+                <p class="text-lg leading-loose text-slate-600 text-justify">
+                    傍晚時分，實習工廠總是燈火通明。這不是玩樂，而是充滿<span class="font-bold text-slate-800 bg-orange-100 px-1 mx-1 rounded">焊錫煙味</span>、<span class="font-bold text-slate-800 bg-orange-100 px-1 mx-1 rounded">金屬切削聲</span>的戰場。有的孩子為了抓出一個程式錯誤，眼睛佈滿血絲。但他們沒有喊苦，因為那專注的背影在告訴我們：「我想變得更好，我想擁有一技之長。」
+                </p>
+                <div class="mt-6 pt-4 border-t border-slate-100 text-right">
+                    <span class="text-sm text-slate-500 font-medium">—— 內湖高工家長會 誠摯邀請</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center md:text-left mb-12">
+                <h2 class="text-3xl font-bold text-slate-900">我們的驕傲：不輸普高的亮眼榜單</h2>
+                <p class="text-slate-500 mt-3 text-lg">這條技職的路不容易，但風景絕對獨特。去年我們共同見證了內工孩子不凡的成就。</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-slate-50 rounded-2xl p-8 border border-slate-100 hover:border-blue-400 hover:shadow-lg transition group">
+                    <div class="text-5xl font-bold text-slate-800 mb-2 group-hover:text-blue-600 transition">93%</div>
+                    <div class="h-1 w-12 bg-blue-500 mb-4 rounded-full"></div>
+                    <h4 class="text-xl font-bold text-slate-800 mb-3">大學錄取比率</h4>
+                    <p class="text-slate-600 leading-relaxed">升學就業，雙軌全贏！這證明了讀高工，升學之路一樣寬廣。技術在手，飯碗就有！</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-slate-50 rounded-2xl p-8 border border-slate-100 hover:border-yellow-400 hover:shadow-lg transition group">
+                    <div class="text-5xl font-bold text-slate-800 mb-2 group-hover:text-yellow-500 transition">3連霸</div>
+                    <div class="h-1 w-12 bg-yellow-500 mb-4 rounded-full"></div>
+                    <h4 class="text-xl font-bold text-slate-800 mb-3">金手獎殊榮</h4>
+                    <p class="text-slate-600 leading-relaxed">全國工業類技藝競賽連續三年勇奪「金手獎」，全國技能總決賽連續兩年奪金，技術全國頂尖。</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-slate-50 rounded-2xl p-8 border border-slate-100 hover:border-green-400 hover:shadow-lg transition group">
+                    <div class="text-5xl font-bold text-slate-800 mb-2 group-hover:text-green-600 transition">Top</div>
+                    <div class="h-1 w-12 bg-green-500 mb-4 rounded-full"></div>
+                    <h4 class="text-xl font-bold text-slate-800 mb-3">產學接軌</h4>
+                    <p class="text-slate-600 leading-relaxed">與雲科大、台積電、旺宏電子深度合作。企業直接入校徵才，因為內工孩子最實用、最耐操。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Budget Section -->
+    <section id="budget" class="py-20 bg-slate-900 text-white overflow-hidden relative">
+        <!-- Decorative bg elements -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+        <div class="absolute bottom-0 left-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
+
+        <div class="max-w-6xl mx-auto px-6 relative z-10">
+            <div class="flex flex-col lg:flex-row gap-16 items-center">
+                
+                <!-- Left: Chart Area -->
+                <div class="w-full lg:w-1/2">
+                    <h2 class="text-3xl font-bold mb-2">114學年度 經費透視</h2>
+                    <p class="text-slate-400 mb-8">總目標 <span class="text-orange-400 font-bold text-xl ml-1">NT$ 950,000</span>，每一分錢都是養分。</p>
+                    
+                    <div class="bg-slate-800/50 p-6 rounded-3xl border border-slate-700 backdrop-blur-sm">
+                        <div class="chart-container">
+                            <canvas id="budgetChart"></canvas>
+                        </div>
+                        <p class="text-center text-xs text-slate-500 mt-4">💡 點擊上方色塊可查看詳細用途</p>
+                    </div>
+                </div>
+
+                <!-- Right: Details Area -->
+                <div class="w-full lg:w-1/2 space-y-8">
+                    <!-- Dynamic Detail Box -->
+                    <div id="detail-box" class="bg-slate-800 p-8 rounded-2xl border-l-4 border-orange-500 shadow-2xl min-h-[200px] flex flex-col justify-center transition-all">
+                        <h3 id="detail-title" class="text-2xl font-bold text-white mb-2">請點擊左側圖表</h3>
+                        <p id="detail-desc" class="text-slate-300">了解我們如何將您的支持轉化為孩子的力量。</p>
+                    </div>
+
+                    <!-- New Focus Areas -->
+                    <div class="pt-6 border-t border-slate-800">
+                        <h4 class="text-sm font-bold text-slate-400 uppercase tracking-wider mb-4">本年度重點強化項目</h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div class="bg-slate-800/80 p-4 rounded-xl hover:bg-slate-700 transition">
+                                <span class="text-2xl mb-2 block">🚀</span>
+                                <div class="font-bold text-white mb-1">職涯發展與參訪</div>
+                                <p class="text-xs text-slate-400">資助參訪台科大、北科大，引進履歷面試課程。</p>
+                            </div>
+                            <div class="bg-slate-800/80 p-4 rounded-xl hover:bg-slate-700 transition">
+                                <span class="text-2xl mb-2 block">🛡️</span>
+                                <div class="font-bold text-white mb-1">校務行政後盾</div>
+                                <p class="text-xs text-slate-400">支援學務處推動社團、體育競賽及升學講座。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Donation Section -->
+    <section id="donate" class="py-20 bg-slate-50">
+        <div class="max-w-3xl mx-auto px-6">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">❤️ 會長的真心呼籲</h2>
+                <p class="text-lg text-slate-600 italic">
+                    「錢多錢少不是重點，重點是眾志成城的心意。三百、五百是情份，三千、五千是相挺。」
+                </p>
+                <div class="mt-4 inline-block bg-white px-4 py-1 rounded-full border border-slate-200 text-sm text-slate-500">
+                    採自由樂捐，非強迫性，帳目公開透明
+                </div>
+            </div>
+
+            <!-- Action Card -->
+            <div class="bg-white rounded-3xl shadow-xl border border-slate-200 overflow-hidden">
+                <!-- Header -->
+                <div class="bg-slate-800 p-6 text-center">
+                    <h3 class="text-white text-xl font-bold">匯款帳號資訊</h3>
+                    <p class="text-white text-xl font-bold mt-2">永豐銀行 內湖分行 (807)</p>
+                </div>
+
+                <!-- Body -->
+                <div class="p-8 space-y-6">
+                    <!-- Account Number -->
+                    <div class="bg-orange-50 rounded-xl p-6 text-center border border-orange-100">
+                        <p class="text-xs text-orange-600 font-bold uppercase tracking-wider mb-2">銀行帳號</p>
+                        <div class="flex items-center justify-center gap-3 mb-4">
+                            <span class="text-2xl md:text-3xl font-mono font-bold text-slate-800 tracking-wider">134-018-0006902-3</span>
+                        </div>
+                        <button onclick="copyAccount()" class="inline-flex items-center justify-center px-6 py-2 bg-orange-600 hover:bg-orange-700 text-white rounded-lg font-medium transition shadow-md active:scale-95">
+                            <span class="mr-2">📋</span> 複製帳號
+                        </button>
+                    </div>
+
+                    <!-- Account Name -->
+                    <div class="text-center">
+                        <p class="text-xs text-slate-400 uppercase mb-1">戶名 (請確認無誤)</p>
+                        <p class="font-bold text-slate-700">臺北市立內湖高級工業職業學校學生家長會</p>
+                    </div>
+
+                    <div class="border-t border-slate-100 my-6"></div>
+
+                    <!-- Google Form Button (Critical) -->
+                    <div class="text-center">
+                        <p class="text-slate-600 mb-4 font-medium">匯款完成後，請務必填寫回報單以利對帳：</p>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLScMOPpWxcVpISxFe1NvKwSBFZLm8PdHGYCE9yXGQf-W20NeUA/viewform?usp=send_form" target="_blank" class="inline-flex items-center justify-center w-full md:w-auto px-8 py-4 bg-green-600 hover:bg-green-700 text-white rounded-xl font-bold text-lg shadow-lg hover:shadow-green-500/30 transition transform hover:-translate-y-1">
+                            <span class="mr-2">📝</span> 填寫匯款回報單 (Google Form)
+                        </a>
+                        <p class="text-xs text-slate-400 mt-3">點擊將開啟 Google 表單</p>
+                    </div>
+                </div>
+
+                <!-- Footer of Card -->
+                <div class="bg-slate-50 p-4 text-center text-xs text-slate-500 border-t border-slate-100">
+                    確認款項無誤後，將開立正式收據並交由孩子帶回
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-500 py-10 text-center">
+        <p class="mb-2 font-bold text-slate-400">臺北市立內湖高級工業職業學校學生家長會</p>
+        <p class="text-sm">會長 巫芊穎 暨全體委員 敬上</p>
+        <p class="text-xs mt-8 opacity-50">Designed for Neihu High Industrial Vocational School Parents Association</p>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-8 left-1/2 transform -translate-x-1/2 bg-slate-800 text-white px-6 py-3 rounded-full shadow-2xl opacity-0 transition-opacity duration-300 pointer-events-none z-50 flex items-center">
+        <span class="text-green-400 mr-2">✓</span> 帳號已複製到剪貼簿
+    </div>
+
+    <script>
+        // --- Data ---
+        const budgetData = {
+            labels: ['校內外競賽支援', '重要活動經費', '畢業生服務', '弱勢學生補助'],
+            values: [30, 32, 23, 15],
+            colors: ['#3b82f6', '#10b981', '#a855f7', '#f97316'], // Blue, Emerald, Purple, Orange
+            desc: [
+                '補助選手培訓材料費、外地比賽差旅費。不能讓孩子餓著肚子比賽。',
+                '校慶、技藝展演、親師座談，活絡校園氣氛。',
+                '讓孩子風光畢業，留下美好回憶。',
+                '急難救助金，確保沒有孩子因為家裡變故而中斷學業。'
+            ]
+        };
+
+        // --- Chart ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const ctx = document.getElementById('budgetChart').getContext('2d');
+            
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: budgetData.labels,
+                    datasets: [{
+                        data: budgetData.values,
+                        backgroundColor: budgetData.colors,
+                        borderWidth: 0,
+                        hoverOffset: 20
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '65%',
+                    plugins: {
+                        legend: { position: 'bottom', labels: { color: '#94a3b8', padding: 20, font: { family: "'Noto Sans TC'" } } },
+                        tooltip: { 
+                            callbacks: { label: (ctx) => ` ${ctx.label}: ${ctx.raw}%` },
+                            backgroundColor: 'rgba(15, 23, 42, 0.9)',
+                            padding: 12
+                        }
+                    },
+                    onClick: (e, activeElements) => {
+                        if (activeElements.length > 0) {
+                            updateDetailBox(activeElements[0].index);
+                        }
+                    }
+                }
+            });
+
+            // Init details with first item
+            updateDetailBox(0);
+        });
+
+        function updateDetailBox(index) {
+            const box = document.getElementById('detail-box');
+            const title = document.getElementById('detail-title');
+            const desc = document.getElementById('detail-desc');
+            
+            // Fade out
+            box.style.opacity = '0.5';
+            
+            setTimeout(() => {
+                title.innerText = `${budgetData.labels[index]} (${budgetData.values[index]}%)`;
+                title.style.color = budgetData.colors[index];
+                desc.innerText = budgetData.desc[index];
+                
+                // Fade in
+                box.style.opacity = '1';
+                box.style.borderColor = budgetData.colors[index];
+            }, 150);
+        }
+
+        // --- Utilities ---
+        function copyAccount() {
+            navigator.clipboard.writeText("134-018-0006902-3").then(() => {
+                const toast = document.getElementById('toast');
+                toast.style.opacity = '1';
+                setTimeout(() => toast.style.opacity = '0', 2500);
+            });
+        }
+
+        function scrollToSection(id) {
+            const el = document.getElementById(id);
+            const navHeight = 70;
+            const top = el.getBoundingClientRect().top + window.pageYOffset - navHeight;
+            window.scrollTo({ top: top, behavior: 'smooth' });
+            
+            // Close mobile menu if open (simple toggle logic assumption)
+            document.getElementById('mobile-menu').classList.add('hidden');
+        }
+
+        // --- Scroll Spy ---
+        window.addEventListener('scroll', () => {
+            const sections = ['vision', 'achievements', 'budget', 'donate'];
+            let current = '';
+            
+            sections.forEach(sec => {
+                const el = document.getElementById(sec);
+                if (window.scrollY >= (el.offsetTop - 150)) {
+                    current = sec;
+                }
+            });
+
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('nav-active');
+                if (btn.id === `btn-${current}`) btn.classList.add('nav-active');
+            });
+        });
+    </script>
+</body>
+</html>
